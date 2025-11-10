@@ -3,8 +3,8 @@
   "rows": 3,
   "cols": 5,
   "buttons": [
-    {"row": 0, "col": 1, "text": "Tekstfelt", "span": 2, "type": "text"},
-    {"row": 1, "col": 0, "text": "Næste layout", "action": "next_layout"},
-    {"row": 0, "col": 0, "text": "Afslut", "action": "quit"}
+    {"row": 0, "col": 0, "text": "Status", "span": 2, "type": "text"},
+    {"row": 1, "col": 0, "text": "Næste", "icon": "hjem.png", "action": "next_layout"},
+    {"row": 1, "col": 1, "text": "Afslut", "icon": "hjem.png", "action": "quit"}
   ]
 }
