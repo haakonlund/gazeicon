@@ -3,7 +3,7 @@
   "rows": 3,
   "cols": 5,
   "buttons": [
-    {"row": 0, "col": 0, "text": "Tekstfelt", "span": 2, "type": "text"},
+    {"row": 0, "col": 1, "text": "Tekstfelt", "span": 2, "type": "text"},
     {"row": 1, "col": 0, "text": "Næste layout", "action": "next_layout"},
     {"row": 2, "col": 4, "text": "Afslut", "action": "quit"}
   ]
