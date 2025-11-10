@@ -4,7 +4,7 @@
   "cols": 5,
   "buttons": [
     {"row": 0, "col": 0, "text": "Tilbage", "action": "prev_layout"},
-    {"row": 1, "col": 2, "text": "Alternativ felt", "span": 2, "type": "text"},
+    {"row": 0, "col": 1, "text": "Alternativ felt", "span": 2, "type": "text"},
     {"row": 2, "col": 4, "text": "Afslut", "action": "quit"}
   ]
 }
