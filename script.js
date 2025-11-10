@@ -134,13 +134,13 @@ function handleAction(action) {
 function updateTextFields() {
     counter++;
     textFields.forEach(f => {
-        ctx.fillStyle = "#3A3A3A"; // samme mørkegrå baggrund
+        ctx.fillStyle = "#FFFFFF"; // hvid baggrund
         ctx.fillRect(f.x, f.y, f.w, f.h);
         ctx.strokeStyle = "#FFFFFF";
         ctx.lineWidth = 2;
         ctx.strokeRect(f.x, f.y, f.w, f.h);
 
-        ctx.fillStyle = "#FFFFFF";
+        ctx.fillStyle = "#3A3A3A";
         ctx.font = "bold 20px Helvetica";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
