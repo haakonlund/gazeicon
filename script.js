@@ -93,7 +93,7 @@ function drawLayout() {
             ctx.fillStyle = "#FFFFFF";
             ctx.font = "bold 20px Helvetica";
             ctx.textAlign = "center";
-            ctx.textBaseline = "bottom";
+            ctx.textBaseline = "center";
             ctx.fillText(btn.text, x + w / 2, y + h - 10);
         }
 
