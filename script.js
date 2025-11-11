@@ -16,7 +16,7 @@ async function loadLayouts() {
         "layouts/main.json",
         "layouts/scenario.json",
         "layouts/aftaler.json",
-        "layouts/frisør.json"
+        "layouts/frisor.json"
     ];
 
     for (const file of layoutFiles) {
