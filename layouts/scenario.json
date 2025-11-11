@@ -1,0 +1,21 @@
+{
+  "name": "scenario",
+  "rows": 3,
+  "cols": 5,
+  "buttons": [
+    {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "quit"},
+    {"row": 0, "col": 1, "text": "", "span": 2, "type": "text", "id": "statusField"},
+    {"row": 0, "col": 3, "text": "MERE", "action": "goto_layout", "target": "alt"},
+    {"row": 0, "col": 4, "text": ""},
+    {"row": 1, "col": 0, "text": ""},
+    {"row": 1, "col": 1, "icon": "ja.png", "action": "update_text", "target": "statusField", "message": "Ja"},
+    {"row": 1, "col": 2, "icon": "nej.png", "action": "update_text", "target": "statusField", "message": "Nej"},
+    {"row": 1, "col": 3, "icon": "gentag.png", "action": "update_text", "target": "statusField", "message": "Du må gerne gentage"},
+    {"row": 1, "col": 4, "text": ""},
+    {"row": 2, "col": 0, "text": ""},
+    {"row": 2, "col": 1, "icon": "smily_rød.png", "action": "update_text", "target": "statusField", "message": "Jeg har det ikke så godt"},
+    {"row": 2, "col": 2, "icon": "smily_gul.png", "action": "update_text", "target": "statusField", "message": "Jeg har det fint"},
+    {"row": 2, "col": 3, "icon": "smily_grøn.png", "action": "update_text", "target": "statusField", "message": "Jeg har det rigtig godt"},
+    {"row": 2, "col": 4, "text": ""}
+  ]
+}
