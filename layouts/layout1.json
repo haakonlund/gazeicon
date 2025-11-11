@@ -12,6 +12,7 @@
     {"row": 1, "col": 2, "icon": "nej.png"},
     {"row": 1, "col": 3, "icon": "gentag.png"},
     {"row": 1, "col": 4, "text": ""},
-    {"row": 2, "col": 0, "text": ""}
+    {"row": 2, "col": 0, "text": ""},
+    {"row": 2, "col": 1, "icon": "smily_rød.png"}
   ]
 }
