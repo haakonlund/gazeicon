@@ -11,6 +11,11 @@
     {"row": 1, "col": 1, "icon": "ja.png"},
     {"row": 1, "col": 2, "icon": "nej.png"},
     {"row": 1, "col": 3, "icon": "gentag.png"},
-    {"row": 1, "col": 4, "text": ""}
+    {"row": 1, "col": 4, "text": ""},
+    {"row": 3, "col": 0, "text": ""},
+    {"row": 3, "col": 1, "icon": "smily_rød.png"},
+    {"row": 3, "col": 2, "icon": "smily_gul.png"},
+    {"row": 3, "col": 3, "icon": "smily_grøn.png"},
+    {"row": 3, "col": 4, "text": ""}
   ]
 }
