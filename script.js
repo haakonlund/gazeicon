@@ -15,6 +15,7 @@ async function loadLayouts() {
     const layoutFiles = [
         "layouts/main.json",
         "layouts/scenario.json"
+        "layouts/aftaler.json"
         
     ];
 
