@@ -7,7 +7,7 @@ let buttons = [];
 let textFields = [];
 let counter = 0;
 let iconCache = {};
-let textValues = {}; // gemmer tekst i tekstfelter
+let textValues = {}; // gemmer tekst i tekstfelter (som string eller array)
 
 // ---------- Load all JSON layouts ----------
 async function loadLayouts() {
@@ -69,58 +69,57 @@ function drawLayout() {
         const w = cellW * span;
         const h = cellH;
 
-        // baggrundsfarver
-        if (btn.type === "text") {
-            ctx.fillStyle = "#FFFFFF"; // hvid tekstfelt
-        } else {
-            ctx.fillStyle = "#000000"; // sort knap
-        }
+        // baggrund
+        ctx.fillStyle = btn.type === "text" ? "#FFFFFF" : "#000000";
         ctx.fillRect(x, y, w, h);
 
-        // ramme
+        // kant
         ctx.strokeStyle = "#FFFFFF";
         ctx.lineWidth = 2;
         ctx.strokeRect(x, y, w, h);
 
-        // find tekst (evt. opdateret)
+        // tekst
         const textToDraw =
             btn.type === "text" && btn.id && textValues[btn.id]
-                ? textValues[btn.id]
+                ? (Array.isArray(textValues[btn.id]) ? textValues[btn.id].join("\n") : textValues[btn.id])
                 : btn.text || "";
 
-        // ikon + tekst centreres lodret
-        let iconY = y + h / 2;
-        let textY = y + h / 2;
-        if (btn.icon && iconCache[btn.icon]) {
-            iconY = y + h * 0.4;
-            textY = y + h * 0.7;
-        }
+        if (btn.type !== "text") {
+            // knapper: centreret tekst/ikon
+            let textY = y + h / 2;
+            if (btn.icon && iconCache[btn.icon]) {
+                const img = iconCache[btn.icon];
+                const iconSize = Math.min(w, h) * 0.4;
+                ctx.drawImage(img, x + w / 2 - iconSize / 2, y + h / 2 - iconSize / 2 - 10, iconSize, iconSize);
+                textY = y + h * 0.7;
+            }
 
-        // ikon
-        if (btn.icon && iconCache[btn.icon]) {
-            const img = iconCache[btn.icon];
-            const iconSize = Math.min(w, h) * 0.4;
-            ctx.drawImage(img, x + w / 2 - iconSize / 2, y + h / 2 - iconSize / 2 - 10, iconSize, iconSize);
+            ctx.fillStyle = "#FFFFFF";
+            ctx.font = "bold 20px Helvetica";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(textToDraw, x + w / 2, textY);
+        } else {
+            // tekstfelter: venstre/top + flere linjer
+            ctx.fillStyle = "#000000";
+            ctx.font = "bold 18px Helvetica";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            const padding = 10;
+            wrapText(ctx, textToDraw, x + padding, y + padding, w - 2 * padding, 22);
         }
-
-        // tekst
-        ctx.fillStyle = btn.type === "text" ? "#000000" : "#FFFFFF";
-        ctx.font = "bold 20px Helvetica";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(textToDraw, x + w / 2, textY);
 
         buttons.push({ ...btn, x, y, w, h });
         if (btn.type === "text") {
             textFields.push({ ...btn, x, y, w, h });
             if (btn.id && !textValues[btn.id]) {
-                textValues[btn.id] = btn.text;
+                textValues[btn.id] = [btn.text];
             }
         }
     });
 }
 
-// ---------- Click handler ----------
+// ---------- Handle click ----------
 canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
@@ -151,7 +150,20 @@ function handleAction(btn) {
         const target = btn.target;
         const msg = btn.message;
         if (target && msg) {
-            textValues[target] = msg;
+            textValues[target] = [msg];
+            drawLayout();
+        }
+    } else if (action === "append_text") {
+        const target = btn.target;
+        const msg = btn.message;
+        if (target && msg) {
+            if (!textValues[target]) textValues[target] = [];
+            textValues[target].push(msg);
+
+            // begræns til fx 15 linjer
+            if (textValues[target].length > 15) {
+                textValues[target].shift();
+            }
             drawLayout();
         }
     }
@@ -167,14 +179,41 @@ function updateTextFields() {
         ctx.lineWidth = 2;
         ctx.strokeRect(f.x, f.y, f.w, f.h);
 
-        const value = textValues[f.id] || f.text || "";
+        const valueArray = textValues[f.id] || [f.text || ""];
+        const value = valueArray.join("\n");
+
         ctx.fillStyle = "#000000";
-        ctx.font = "bold 20px Helvetica";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(value, f.x + f.w / 2, f.y + f.h / 2);
+        ctx.font = "bold 18px Helvetica";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        const padding = 10;
+        wrapText(ctx, value, f.x + padding, f.y + padding, f.w - 2 * padding, 22);
     });
+}
+
+// ---------- Tekstombrydning (multilinje) ----------
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    const lines = text.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        const words = lines[i].split(" ");
+        let line = "";
+        for (let n = 0; n < words.length; n++) {
+            const testLine = line + words[n] + " ";
+            const metrics = ctx.measureText(testLine);
+            const testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                ctx.fillText(line, x, y);
+                line = words[n] + " ";
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, x, y);
+        y += lineHeight;
+    }
 }
 
 // ---------- Start ----------
 loadLayouts();
+
