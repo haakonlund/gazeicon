@@ -9,13 +9,13 @@
     {"row": 0, "col": 4, "text": "Genoptræning", "icon": "genoptræning.png"},
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "text": ""},
-    {"row": 1, "col": 2, "text": ""},
+    {"row": 1, "col": 2, "text": "m", "action": "goto_layout", "target": "genop_2"},
     {"row": 1, "col": 3, "text": "hvordan", "action": "update_text", "target": "statusField", "message": "hvordan"},
     {"row": 1, "col": 4, "text": "det", "action": "update_text", "target": "statusField", "message": "hvordan går det"},
     {"row": 2, "col": 0, "text": "h"},
     {"row": 2, "col": 1, "text": "s"},
     {"row": 2, "col": 2, "text": "k"},
-    {"row": 2, "col": 3, "text": "d", "action": "goto_layout", "target": "genop_2"},
+    {"row": 2, "col": 3, "text": "gik"},
     {"row": 2, "col": 4, "text": "går", "action": "update_text", "target": "statusField", "message": "hvordan går"}
   ]
 }
