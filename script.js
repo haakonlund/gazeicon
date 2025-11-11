@@ -16,7 +16,8 @@ async function loadLayouts() {
         "layouts/main.json",
         "layouts/scenario.json",
         "layouts/aftaler.json",
-        "layouts/frisor.json"
+        "layouts/frisor.json",
+        "layouts/frisor_1.json"
 
     ];
 
