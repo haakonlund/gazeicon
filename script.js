@@ -22,7 +22,8 @@ async function loadLayouts() {
         "layouts/genop_1.json",
         "layouts/genop_2.json",
         "layouts/mad.json",
-        "layouts/slagter_1.json"
+        "layouts/slagter_1.json",
+        "layouts/person.json"
 
     ];
 
