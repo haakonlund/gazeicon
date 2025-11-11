@@ -7,7 +7,7 @@
     {"row": 0, "col": 1, "text": "", "span": 2, "type": "text", "id": "statusField"},
     {"row": 0, "col": 3, "text": ""},
     {"row": 0, "col": 4, "text": ""},
-    {"row": 1, "col": 0, "icon": "aftaler.png","span": 1, "action": "goto_layout", "target": "aftaler"},
+    {"row": 1, "col": 0, "text": "Aftaler", "icon": "aftaler.png","span": 1, "action": "goto_layout", "target": "aftaler"},
     {"row": 1, "col": 1, "text": ""},
     {"row": 1, "col": 2, "text": ""},
     {"row": 1, "col": 3, "text": ""},
