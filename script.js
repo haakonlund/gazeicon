@@ -19,8 +19,8 @@ async function loadLayouts() {
         "layouts/frisor.json",
         "layouts/frisor_1.json",
         "layouts/frisor_2.json",
-        "layouts/genop_1",
-        "layouts/genop_2"
+        "layouts/genop_1.json",
+        "layouts/genop_2.json"
 
     ];
 
