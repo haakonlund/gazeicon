@@ -3,7 +3,7 @@
   "rows": 3,
   "cols": 5,
   "buttons": [
-    {"row": 0, "col": 0, "text": "Hjem", "icon": "hjem_grøn.png","span": 1, "action": "quit"},
+    {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "quit"},
     {"row": 0, "col": 1, "text": "Status", "span": 2, "type": "text"},
     {"row": 0, "col": 3, "text": "MERE", "action": "next_layout"},
     {"row": 0, "col": 4, "text": ""},
@@ -11,7 +11,6 @@
     {"row": 1, "col": 1, "icon": "ja.png"},
     {"row": 1, "col": 2, "icon": "nej.png"},
     {"row": 1, "col": 3, "icon": "gentag.png"},
-    {"row": 1, "col": 0, "text": ""},
-    {"row": 1, "col": 1, "text": "Afslut", "icon": "hjem.png", "action": "quit"}
+    {"row": 1, "col": 4, "text": ""}
   ]
 }
