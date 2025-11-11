@@ -1,5 +1,5 @@
 {
-  "name": "frisor_1",
+  "name": "frisor_2",
   "rows": 3,
   "cols": 5,
   "buttons": [
@@ -10,12 +10,12 @@
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "text": ""},
     {"row": 1, "col": 2, "text": ""},
-    {"row": 1, "col": 3, "text": "jeg", "action": "update_text", "target": "statusField", "message": "Jeg"},
-    {"row": 1, "col": 4, "text": "så"},
-    {"row": 2, "col": 0, "text": "j"},
+    {"row": 1, "col": 3, "text": ""},
+    {"row": 1, "col": 4, "text": "bruges"},
+    {"row": 2, "col": 0, "text": "f"},
     {"row": 2, "col": 1, "text": "s"},
-    {"row": 2, "col": 2, "text": "k", "action": "goto_layout", "target": "frisor_2"},
+    {"row": 2, "col": 2, "text": "b"},
     {"row": 2, "col": 3, "text": ""},
-    {"row": 2, "col": 4, "text": "skal", "action": "update_text", "target": "statusField", "message": "Jeg skal"}
+    {"row": 2, "col": 4, "text": "klippes", "action": "update_text", "target": "statusField", "message": "Jeg skal klippes"}
   ]
 }
