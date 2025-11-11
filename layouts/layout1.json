@@ -10,7 +10,7 @@
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "icon": "ja.png"},
     {"row": 1, "col": 2, "icon": "nej.png"},
-    {"row": 1, "col": 3, "icon": "jentag.png"},
+    {"row": 1, "col": 3, "icon": "gentag.png"},
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "text": "Afslut", "icon": "hjem.png", "action": "quit"}
   ]
