@@ -7,7 +7,7 @@
     {"row": 0, "col": 1, "text": " ", "span": 2, "type": "text", "id": "statusField"},
     {"row": 0, "col": 3, "text": "TILBAGE", "action": "goto_layout", "target": "scenario"},
     {"row": 0, "col": 4, "text": "Aftaler", "icon": "aftaler.png"},
-    {"row": 1, "col": 0, "text": "Genoptræning", "icon": "genoptræning.png","span": 1, "action": "goto_layout", "target": "main"},
+    {"row": 1, "col": 0, "text": "Genoptræning", "icon": "genoptræning.png","span": 1, "action": "goto_layout", "target": "genop_1"},
     {"row": 1, "col": 1, "text": "Til læge", "icon": "hos_lægent.png","span": 1, "action": "goto_layout", "target": "main"},
     {"row": 1, "col": 2, "text": "Til frisør", "icon": "frisør.png","span": 1, "action": "goto_layout", "target": "frisor"},
     {"row": 1, "col": 3, "text": ""},
