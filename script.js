@@ -14,7 +14,7 @@ let textValues = {}; // tekstfelter
 async function loadLayouts() {
     const layoutFiles = [
         "layouts/main.json",
-        "layouts/scenarie.json"
+        "layouts/scenario.json"
         
     ];
 
