@@ -1,0 +1,21 @@
+{
+  "name": "slagter_1",
+  "rows": 3,
+  "cols": 5,
+  "buttons": [
+    {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "goto_layout", "target": "main"},
+    {"row": 0, "col": 1, "text": "Hej! 😊 Velkommen i slagterbutikken. Hvad vil du sige til slagteren? ", "span": 2, "type": "text", "id": "statusField"},
+    {"row": 0, "col": 3, "text": "Madlavning", "icon": "mad.png", "action": "goto_layout", "target": "mad"},
+    {"row": 0, "col": 4, "text": "Hos salgteren", "icon": "slagter.png"},
+    {"row": 1, "col": 0, "text": ""},
+    {"row": 1, "col": 1, "text": ""},
+    {"row": 1, "col": 2, "text": ""},
+    {"row": 1, "col": 3, "text": ""},
+    {"row": 1, "col": 4, "text": ""},
+    {"row": 2, "col": 0, "text": ""},
+    {"row": 2, "col": 1, "text": ""},
+    {"row": 2, "col": 2, "text": ""},
+    {"row": 2, "col": 3, "text": ""},
+    {"row": 2, "col": 4, "text": ""}
+  ]
+}
