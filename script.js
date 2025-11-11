@@ -1,32 +1,40 @@
 const canvas = document.getElementById("gridCanvas");
 const ctx = canvas.getContext("2d");
 
-let layouts = [];
-let currentLayoutIndex = 0;
+let layouts = {};            // gemmes som objekt { name: jsonData }
+let layoutOrder = [];        // rækkefølge til next/prev
+let currentLayoutName = "";
 let buttons = [];
 let textFields = [];
 let counter = 0;
 let iconCache = {};
-let textValues = {}; // gemmer tekst i tekstfelter (som string eller array)
+let textValues = {}; // tekstfelter
 
 // ---------- Load all JSON layouts ----------
 async function loadLayouts() {
-    const layoutFiles = ["layouts/layout1.json", "layouts/layout2.json"];
+    const layoutFiles = [
+        "layouts/main.json",
+        "layouts/layout2.json"
+        
+    ];
+
     for (const file of layoutFiles) {
         const res = await fetch(file);
         const json = await res.json();
-        layouts.push(json);
+        layouts[json.name] = json;
+        layoutOrder.push(json.name);
     }
 
+    currentLayoutName = layoutOrder[0]; // start med første layout
     await preloadIcons();
-    drawLayout();
+    drawLayout(currentLayoutName);
     setInterval(updateTextFields, 1000);
 }
 
 // ---------- Preload all icons ----------
 async function preloadIcons() {
     const iconNames = new Set();
-    layouts.forEach(l =>
+    Object.values(layouts).forEach(l =>
         l.buttons.forEach(b => {
             if (b.icon) iconNames.add(b.icon);
         })
@@ -51,12 +59,17 @@ async function preloadIcons() {
 }
 
 // ---------- Draw layout ----------
-function drawLayout() {
+function drawLayout(name) {
+    const layout = layouts[name];
+    if (!layout) {
+        console.warn(`Ukendt layout: ${name}`);
+        return;
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     buttons = [];
     textFields = [];
 
-    const layout = layouts[currentLayoutIndex];
     const rows = layout.rows;
     const cols = layout.cols;
     const cellW = canvas.width / cols;
@@ -85,7 +98,7 @@ function drawLayout() {
                 : btn.text || "";
 
         if (btn.type !== "text") {
-            // knapper: centreret tekst/ikon
+            // knapper
             let textY = y + h / 2;
             if (btn.icon && iconCache[btn.icon]) {
                 const img = iconCache[btn.icon];
@@ -100,7 +113,7 @@ function drawLayout() {
             ctx.textBaseline = "middle";
             ctx.fillText(textToDraw, x + w / 2, textY);
         } else {
-            // tekstfelter: venstre/top + flere linjer
+            // tekstfelter: venstre/top justeret
             ctx.fillStyle = "#000000";
             ctx.font = "bold 18px Helvetica";
             ctx.textAlign = "left";
@@ -119,7 +132,7 @@ function drawLayout() {
     });
 }
 
-// ---------- Handle click ----------
+// ---------- Click handler ----------
 canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
@@ -139,37 +152,40 @@ function handleAction(btn) {
     if (!action) return;
 
     if (action === "next_layout") {
-        currentLayoutIndex = (currentLayoutIndex + 1) % layouts.length;
-        drawLayout();
+        const idx = layoutOrder.indexOf(currentLayoutName);
+        const nextIdx = (idx + 1) % layoutOrder.length;
+        currentLayoutName = layoutOrder[nextIdx];
+        drawLayout(currentLayoutName);
     } else if (action === "prev_layout") {
-        currentLayoutIndex = (currentLayoutIndex - 1 + layouts.length) % layouts.length;
-        drawLayout();
-    } else if (action === "quit") {
-        alert("Afslutter...");
+        const idx = layoutOrder.indexOf(currentLayoutName);
+        const prevIdx = (idx - 1 + layoutOrder.length) % layoutOrder.length;
+        currentLayoutName = layoutOrder[prevIdx];
+        drawLayout(currentLayoutName);
+    } else if (action === "goto_layout") {
+        if (btn.target && layouts[btn.target]) {
+            currentLayoutName = btn.target;
+            drawLayout(currentLayoutName);
+        } else {
+            console.warn(`Ukendt layout: ${btn.target}`);
+        }
     } else if (action === "update_text") {
-        const target = btn.target;
-        const msg = btn.message;
-        if (target && msg) {
-            textValues[target] = [msg];
-            drawLayout();
+        if (btn.target && btn.message) {
+            textValues[btn.target] = [btn.message];
+            drawLayout(currentLayoutName);
         }
     } else if (action === "append_text") {
-        const target = btn.target;
-        const msg = btn.message;
-        if (target && msg) {
-            if (!textValues[target]) textValues[target] = [];
-            textValues[target].push(msg);
-
-            // begræns til fx 15 linjer
-            if (textValues[target].length > 15) {
-                textValues[target].shift();
-            }
-            drawLayout();
+        if (btn.target && btn.message) {
+            if (!textValues[btn.target]) textValues[btn.target] = [];
+            textValues[btn.target].push(btn.message);
+            if (textValues[btn.target].length > 15) textValues[btn.target].shift();
+            drawLayout(currentLayoutName);
         }
+    } else if (action === "quit") {
+        alert("Afslutter...");
     }
 }
 
-// ---------- Update dynamic text fields ----------
+// ---------- Update text fields ----------
 function updateTextFields() {
     counter++;
     textFields.forEach(f => {
@@ -191,7 +207,7 @@ function updateTextFields() {
     });
 }
 
-// ---------- Tekstombrydning (multilinje) ----------
+// ---------- Tekstombrydning ----------
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
     const lines = text.split("\n");
     for (let i = 0; i < lines.length; i++) {
@@ -216,4 +232,3 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 
 // ---------- Start ----------
 loadLayouts();
-
