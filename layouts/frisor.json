@@ -4,7 +4,7 @@
   "cols": 5,
   "buttons": [
     {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "goto_layout", "target": "main"},
-    {"row": 0, "col": 1, "text": "", "span": 2, "type": "text", "id": "statusField"},
+    {"row": 0, "col": 1, "text": " ", "span": 2, "type": "text", "id": "statusField"},
     {"row": 0, "col": 3, "text": "Aftaler", "icon": "aftaler.png", "action": "goto_layout", "target": "aftaler"},
     {"row": 0, "col": 4, "text": "Frisør", "icon": "frisør.png"},
     {"row": 1, "col": 0, "text": "Klippes", "icon": "klippes.png","span": 1, "action": "goto_layout", "target": "frisor_1"},
