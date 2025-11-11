@@ -11,7 +11,7 @@
     {"row": 1, "col": 1, "text": "jeg", "action": "update_text", "target": "statusField", "message": "jeg"},
     {"row": 1, "col": 2, "text": "skal", "action": "update_text", "target": "statusField", "message": "jeg skal"},
     {"row": 1, "col": 3, "text": "lave", "action": "update_text", "target": "statusField", "message": "jeg skal lave"},
-    {"row": 1, "col": 4, "text": "frikadeller", "action": "update_text", "target": "statusField", "message": "jeg skal lave frikadeller"},
+    {"row": 1, "col": 4, "text": "frikadeller", "action": "update_text", "target": "statusField", "message": "jeg skal lave frikadeller\nSlagter: Vil du have svinekød til frikadellerne"},
     {"row": 2, "col": 0, "text": ""},
     {"row": 2, "col": 1, "text": ""},
     {"row": 2, "col": 2, "text": ""},
