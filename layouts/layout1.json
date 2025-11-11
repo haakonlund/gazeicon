@@ -5,7 +5,7 @@
   "buttons": [
     {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "quit"},
     {"row": 0, "col": 1, "text": "", "span": 2, "type": "text", "id": "statusField"},
-    {"row": 0, "col": 3, "text": "MERE", "action": "next_layout"},
+    {"row": 0, "col": 3, "text": "MERE", "action": "goto_layout", "target": "layout2"},
     {"row": 0, "col": 4, "text": ""},
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "icon": "ja.png", "action": "update_text", "target": "statusField", "message": "Ja"},
