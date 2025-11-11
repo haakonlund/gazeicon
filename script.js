@@ -13,8 +13,8 @@ let textValues = {}; // tekstfelter
 // ---------- Load all JSON layouts ----------
 async function loadLayouts() {
     const layoutFiles = [
-        "layouts/layout1.json",
-        "layouts/layout2.json"
+        "layouts/main.json",
+        "layouts/scenarie.json"
         
     ];
 
