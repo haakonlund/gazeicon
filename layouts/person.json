@@ -6,7 +6,7 @@
     {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "goto_layout", "target": "main"},
     {"row": 0, "col": 1, "text": " ", "span": 2, "type": "text", "id": "statusField"},
     {"row": 0, "col": 3, "text": ""},
-    {"row": 0, "col": 4, "text": "Om mig", "icon": "person.png"},
+    {"row": 0, "col": 4, "text": "Om mig", "icon": "mig.png"},
     {"row": 1, "col": 0, "text": "billede 1"},
     {"row": 1, "col": 1, "text": "billede 2"},
     {"row": 1, "col": 2, "text": ""},

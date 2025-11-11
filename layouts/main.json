@@ -6,7 +6,7 @@
     {"row": 0, "col": 0, "icon": "hjem_grøn.png","span": 1, "action": "quit"},
     {"row": 0, "col": 1, "text": " ", "span": 2, "type": "text", "id": "statusField"},
     {"row": 0, "col": 3, "text": "MERE", "action": "goto_layout", "target": "scenario"},
-    {"row": 0, "col": 4, "text": "Om mig", "icon": "person.png", "action": "goto_layout", "target": "person"},
+    {"row": 0, "col": 4, "text": "Om mig", "icon": "mig.png", "action": "goto_layout", "target": "person"},
     {"row": 1, "col": 0, "text": ""},
     {"row": 1, "col": 1, "icon": "ja.png", "action": "update_text", "target": "statusField", "message": "Ja"},
     {"row": 1, "col": 2, "icon": "nej.png", "action": "update_text", "target": "statusField", "message": "Nej"},
